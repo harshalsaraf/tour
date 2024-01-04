@@ -1,6 +1,5 @@
 import React from "react";
 import Tours from "./Tours";
-import Tour from "./Tour";
 import Loading from "./Loading";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -22,32 +21,32 @@ const App = () => {
       console.log(error);
     }
   };
-  
+
   const new_Tours = (id) => {
     const newTours = tours.filter((tours) => tours.id !== id);
     setTours(newTours);
   };
-  
+
   useEffect(() => {
     fetch_data();
   }, []);
 
-  if(loading){
-    return(
+  if (loading) {
+    return (
       <main>
         <Loading />
       </main>
-    )
-  };
-  if(tours.length == 0){
+    );
+  }
+  if (tours.length === 0) {
     return (
       <main>
         <div>
           <h2>There are no tours left</h2>
         </div>
       </main>
-    )
-  };
+    );
+  }
   return (
     <div className="App">
       <Tours tours={tours} new_Tours={new_Tours} />
